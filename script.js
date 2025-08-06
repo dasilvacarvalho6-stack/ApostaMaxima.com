@@ -19,10 +19,27 @@ fetch("jogos.json")
 
       dias[dia].forEach(jogo => {
         const linha = document.createElement("div");
+        linha.className = "jogo-bloco";
         linha.innerHTML = `
           <strong>${jogo.time1} x ${jogo.time2}</strong><br>
-          Horário: ${jogo.horario} <br>
-          <button onclick="selecionarJogo('${jogo.id}', ${jogo.odd})">Odd: ${jogo.odd}</button>
+          Horário: ${jogo.horario}<br>
+          <div class="odds-linha">
+            <button onclick="selecionarJogo('${jogo.id}_1', ${jogo.odd1})">${jogo.time1} (${jogo.odd1})</button>
+            <button onclick="selecionarJogo('${jogo.id}_X', ${jogo.oddX})">Empate (${jogo.oddX})</button>
+            <button onclick="selecionarJogo('${jogo.id}_2', ${jogo.odd2})">${jogo.time2} (${jogo.odd2})</button>
+          </div>
+          <button onclick="toggleMercados(this)">Mais Mercados</button>
+          <div class="mercados-extras" style="display: none;">
+            <p><strong>Dupla Chance:</strong></p>
+            <button onclick="selecionarJogo('${jogo.id}_1X', ${jogo.dupla1X})">1X (${jogo.dupla1X})</button>
+            <button onclick="selecionarJogo('${jogo.id}_12', ${jogo.dupla12})">12 (${jogo.dupla12})</button>
+            <button onclick="selecionarJogo('${jogo.id}_X2', ${jogo.duplaX2})">X2 (${jogo.duplaX2})</button>
+            <p><strong>Gols:</strong></p>
+            <button onclick="selecionarJogo('${jogo.id}_g1.5', ${jogo.gol15})">+1.5 Gols (${jogo.gol15})</button>
+            <button onclick="selecionarJogo('${jogo.id}_g2.5', ${jogo.gol25})">+2.5 Gols (${jogo.gol25})</button>
+            <p><strong>Escanteios:</strong></p>
+            <button onclick="selecionarJogo('${jogo.id}_esc7.5', ${jogo.escanteio75})">+7.5 (${jogo.escanteio75})</button>
+          </div>
         `;
         bloco.appendChild(linha);
       });
@@ -32,25 +49,25 @@ fetch("jogos.json")
   });
 
 function selecionarJogo(id, odd) {
-    if (apostasSelecionadas.includes(id)) return alert("Jogo já selecionado!");
-    if (apostasSelecionadas.length >= 20) return alert("Máximo de 20 jogos!");
+  if (apostasSelecionadas.includes(id)) return alert("Jogo já selecionado!");
+  if (apostasSelecionadas.length >= 20) return alert("Máximo de 20 jogos!");
 
-    apostasSelecionadas.push(id);
-    totalOdds = apostasSelecionadas.reduce((total, _, i) => total * (i === 0 ? odd : 1.5), 1); // odds simuladas
-    document.getElementById("total-odds").textContent = totalOdds.toFixed(2);
-    atualizarRetorno();
+  apostasSelecionadas.push(id);
+  totalOdds = apostasSelecionadas.reduce((total, _, i) => total * (i === 0 ? odd : 1.5), 1); // odds simuladas
+  document.getElementById("total-odds").textContent = totalOdds.toFixed(2);
+  atualizarRetorno();
 }
 
 function atualizarRetorno() {
-    const valor = parseFloat(document.getElementById("valor-aposta").value || 0);
-    document.getElementById("retorno").textContent = (valor * totalOdds).toFixed(2);
+  const valor = parseFloat(document.getElementById("valor-aposta").value || 0);
+  document.getElementById("retorno").textContent = (valor * totalOdds).toFixed(2);
 }
 
 function irParaPagamento() {
-    const valor = parseFloat(document.getElementById("valor-aposta").value || 0);
-    if (valor <= 0 || apostasSelecionadas.length === 0) {
-        alert("Informe o valor da aposta e selecione pelo menos um jogo.");
-        return;
-    }
-    window.location.href = `pagamento.html?valor=${valor}&odds=${totalOdds.toFixed(2)}`;
+  alert("Aposta finalizada (simulação).");
+}
+
+function toggleMercados(btn) {
+  const div = btn.nextElementSibling;
+  div.style.display = div.style.display === "none" ? "block" : "none";
 }
