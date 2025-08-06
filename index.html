@@ -18,7 +18,16 @@
             </ul>
         </nav>
         <main class="main-content">
-            <h2>Jogos de Hoje</h2>
+            <div class="filtros-data">
+                <button onclick="filtrarPorDia('Hoje')">Hoje</button>
+                <button onclick="filtrarPorDia('Amanhã')">Amanhã</button>
+                <button onclick="filtrarPorDia('Quarta')">Quarta</button>
+                <button onclick="filtrarPorDia('Quinta')">Quinta</button>
+                <button onclick="filtrarPorDia('Sexta')">Sexta</button>
+                <button onclick="filtrarPorDia('Sábado')">Sábado</button>
+                <button onclick="filtrarPorDia('Domingo')">Domingo</button>
+            </div>
+            <h2 id="titulo-dia">Jogos de Hoje</h2>
             <div id="jogos-container"></div>
         </main>
         <aside class="sidebar-right">
