@@ -1,0 +1,23 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>ApostaMáxima - Início</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>ApostaMáxima</h1>
+    <div id="jogos-container"></div>
+
+    <div class="aposta-info">
+        <label for="valor-aposta">Valor da Aposta (R$):</label>
+        <input type="number" id="valor-aposta" min="1">
+        <p>Total Odds: <span id="total-odds">0.00</span></p>
+        <p>Retorno Potencial: R$ <span id="retorno">0.00</span></p>
+        <button onclick="irParaPagamento()">Finalizar Aposta</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
