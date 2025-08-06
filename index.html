@@ -1,44 +1,38 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Aposta Máxima - Início</title>
+    <title>Aposta Máxima - Futebol</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="top-bar">
+    <header>
         <h1>Aposta Máxima</h1>
-    </header>
-    <div class="container">
-        <nav class="sidebar-left">
-            <ul>
-                <li><strong>Esportes</strong></li>
-                <li>Futebol</li>
-            </ul>
+        <nav>
+            <button onclick="filtrarCampeonato('brasileirao')">Brasileirão Série A</button>
+            <button onclick="filtrarCampeonato('laliga')">La Liga</button>
         </nav>
-        <main class="main-content">
-            <div class="filtros-data">
-                <button onclick="filtrarPorDia('Hoje')">Hoje</button>
-                <button onclick="filtrarPorDia('Amanhã')">Amanhã</button>
-                <button onclick="filtrarPorDia('Quarta')">Quarta</button>
-                <button onclick="filtrarPorDia('Quinta')">Quinta</button>
-                <button onclick="filtrarPorDia('Sexta')">Sexta</button>
-                <button onclick="filtrarPorDia('Sábado')">Sábado</button>
-                <button onclick="filtrarPorDia('Domingo')">Domingo</button>
+    </header>
+    <main id="jogos">
+        <div class="jogo" onclick="abrirJogo('flamengo_x_palmeiras')">
+            <div class="info">Flamengo x Palmeiras</div>
+            <div class="odds">
+                <span>1.85</span>
+                <span>3.20</span>
+                <span>3.60</span>
             </div>
-            <h2 id="titulo-dia">Jogos de Hoje</h2>
-            <div id="jogos-container"></div>
-        </main>
-        <aside class="sidebar-right">
-            <h3>Boletim de Aposta</h3>
-            <label for="valor-aposta">Valor da Aposta (R$):</label>
-            <input type="number" id="valor-aposta" min="1">
-            <p>Total Odds: <span id="total-odds">0.00</span></p>
-            <p>Retorno Potencial: R$ <span id="retorno">0.00</span></p>
-            <button onclick="irParaPagamento()">Finalizar Aposta</button>
-        </aside>
-    </div>
+            <button>+ Mais mercados</button>
+        </div>
+        <div class="jogo" onclick="abrirJogo('barcelona_x_real')">
+            <div class="info">Barcelona x Real Madrid</div>
+            <div class="odds">
+                <span>2.10</span>
+                <span>3.40</span>
+                <span>2.90</span>
+            </div>
+            <button>+ Mais mercados</button>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>

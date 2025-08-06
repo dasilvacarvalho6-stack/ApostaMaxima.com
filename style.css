@@ -1,56 +1,10 @@
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f1f1f1;
-    color: #000;
-}
-.top-bar {
-    background-color: #c00000;
-    color: white;
-    padding: 15px;
-    text-align: center;
-}
-.container {
-    display: flex;
-}
-.sidebar-left {
-    width: 200px;
-    background-color: #1e1e1e;
-    color: white;
-    padding: 15px;
-}
-.sidebar-left ul {
-    list-style: none;
-    padding: 0;
-}
-.sidebar-left li {
-    margin: 10px 0;
-    cursor: pointer;
-}
-.main-content {
-    flex: 1;
-    padding: 20px;
-    background-color: #fff;
-}
-#jogos-container div {
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-}
-.sidebar-right {
-    width: 250px;
-    background-color: #e6e6e6;
-    padding: 20px;
-}
-button {
-    background-color: #c00000;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    width: 100%;
-}
-button:hover {
-    background-color: #a00000;
-}
+body { font-family: Arial, sans-serif; background: #111; color: #fff; margin: 0; padding: 0; }
+header { background: #b30000; padding: 15px; text-align: center; }
+header h1 { margin: 0; }
+nav button { margin: 5px; padding: 10px; background: #222; color: #fff; border: none; cursor: pointer; }
+main { padding: 20px; }
+.jogo { background: #222; margin-bottom: 10px; padding: 15px; border-radius: 5px; }
+.jogo .info { font-size: 18px; margin-bottom: 10px; }
+.jogo .odds span { margin-right: 15px; background: #333; padding: 5px 10px; border-radius: 3px; }
+.jogo button { margin-top: 10px; padding: 8px 12px; background: #b30000; color: #fff; border: none; cursor: pointer; }
